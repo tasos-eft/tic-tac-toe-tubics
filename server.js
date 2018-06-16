@@ -26,7 +26,7 @@ app.use(compression());
 app.use(express.static(distDir));
 
 // API EndPoints
-app.use('/identify-customers', players);
+app.use('/players', players);
 
 // Send all other requests to the Angular app
 app.get('*', (req, res) => {

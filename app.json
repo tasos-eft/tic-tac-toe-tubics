@@ -1,0 +1,22 @@
+{
+    "name": "Tic Tac Toe Angular 6 app",
+    "description": "Tic Tac Toe Tubics Coding Challenge",
+    "keywords": [
+        "angular.io",
+        "Express",
+        "Node",
+        "MongoDB",
+        "mLab"
+    ],
+    "repository": "https://github.com/tasos-eft/tic-tac-toe-tubics",
+    "success_url": "/",
+    "formation": {
+        "web": {
+            "quantity": 1,
+            "size": "free"
+        }
+    },
+    "addons": [
+        "mongolab"
+    ]
+}

@@ -1,21 +1,69 @@
+@import "../../styles/_constants";
 .navbar {
     a {
         &.navbar-brand {
-            font-size: 2.5rem;
+            color: $light-color;
+            font-size: 1.5rem;
+            visibility: visible;
+            opacity: 1;
+            height: 45px;
+            line-height: 45px;
+            padding: 0;
+            transition: all 0.3s ease-in-out 0s;
+            &.hidden {
+                visibility: hidden;
+                opacity: 0;
+            }
+            @media (min-width: 768px) {
+                font-size: 1.75rem;
+                height: 60px;
+                line-height: 60px;
+            }
         }
     }
     /* Spring */
-    .hamburger--spring {
-        .hamburger-inner {
-            top: 2px;
-            transition: background-color 0s 0.13s linear;
-            &:before {
-                top: 10px;
-                transition: top 0.1s 0.2s cubic-bezier(0.33333, 0.66667, 0.66667, 1), transform 0.13s cubic-bezier(0.55, 0.055, 0.675, 0.19);
-            }
-            &:after {
-                top: 20px;
-                transition: top 0.2s 0.2s cubic-bezier(0.33333, 0.66667, 0.66667, 1), transform 0.13s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+    .hamburger {
+        padding: 8px 8px;
+        height: 45px;
+        @media (min-width: 768px) {
+            padding: 15px 15px;
+            height: 60px;
+        }
+        &.hamburger--spring {
+            .hamburger-inner {
+                background-color: $light-color;
+                top: 2px;
+                left: 5px;
+                width: 30px;
+                height: 3px;
+                transition: background-color 0s 0.13s linear;
+                &:before {
+                    background-color: $light-color;
+                    top: 10px;
+                    width: 30px;
+                    height: 3px;
+                    transition: top 0.1s 0.2s cubic-bezier(0.33333, 0.66667, 0.66667, 1), transform 0.13s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+                }
+                &:after {
+                    background-color: $light-color;
+                    top: 20px;
+                    width: 30px;
+                    height: 3px;
+                    transition: top 0.2s 0.2s cubic-bezier(0.33333, 0.66667, 0.66667, 1), transform 0.13s cubic-bezier(0.55, 0.055, 0.675, 0.19);
+                }
+                @media (min-width: 768px) {
+                    width: 40px;
+                    height: 4px;
+                    left: 0px;
+                    &:before {
+                        width: 40px;
+                        height: 4px;
+                    }
+                    &:after {
+                        width: 40px;
+                        height: 4px;
+                    }
+                }
             }
         }
     }
@@ -38,21 +86,44 @@
     .collapse {
         &.navbar-collapse {
             display: block;
+            position: absolute;
+            top: 0px;
+            left: 15px;
+            width: 75%;
             visibility: hidden;
             opacity: 0;
-            height: 90px;
+            height: auto;
             transition: all 0.3s ease-in-out 0s;
+            z-index: 5;
+            overflow: hidden;
             &.displayed {
                 visibility: visible;
                 opacity: 1;
-                height: 120px;
+            }
+            .navbar-nav {
+                flex-direction: row;
+                .nav-item {
+                    padding-right: 2rem;
+                    font-size: 1.5rem;
+                    height: 45px;
+                    line-height: 45px;
+                    @media (min-width: 768px) {
+                        padding-right: 4rem;
+                        font-size: 1.75rem;
+                        height: 60px;
+                        line-height: 60px;
+                    }
+                    .nav-link {
+                        color: $light-color;
+                    }
+                }
             }
         }
     }
-    .play {
-        vertical-align: bottom;
-        width: 40px;
-        height: auto;
-        margin-left: 20px;
+    .light {
+        color: $light-color;
+    }
+    .purple {
+        color: $purple-color;
     }
 }

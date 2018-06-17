@@ -1,23 +1,25 @@
 <!-- Navigation -->
 <nav class="navbar navbar-light my-5">
-    <div class="container">
-        <a class="navbar-brand text-uppercase" href="#">Tic Tac Toe</a>
+    <a class="navbar-brand text-uppercase" [ngClass]="{'hidden': displayed}" href="/">
+        Tic <i class="fa fa-times mx-3 purple" aria-hidden="true"></i> 
+        Tac <i class="fa fa-circle-thin mx-3 purple" aria-hidden="true"></i>
+        Toe
+    </a>
 
-        <button class="hamburger hamburger--spring" type="button" [ngClass]="{'is-active':spring}" (click)="toggleSpring()" [attr.aria-expanded]="!collapsed" aria-controls="collapseBasic">
+    <button class="hamburger hamburger--spring" type="button" [ngClass]="{'is-active':spring}" (click)="toggleSpring()" [attr.aria-expanded]="!collapsed" aria-controls="collapseBasic">
             <span class="hamburger-box">
                 <span class="hamburger-inner"></span>
             </span>
         </button>
 
-        <div class="collapse navbar-collapse" [ngClass]="{'displayed': displayed}">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item my-3 h2">
-                    <a class="nav-link text-uppercase" href="/play">Play <i class="fa fa-play ml-3" aria-hidden="true"></i> </a>
-                </li>
-                <li class="nav-item my-3 h2">
-                    <a class="nav-link text-uppercase" href="/results">Results <i class="fa fa-trophy ml-3" aria-hidden="true"></i> </a>
-                </li>
-            </ul>
-        </div>
+    <div class="collapse navbar-collapse" [ngClass]="{'displayed': displayed}">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+                <a class="nav-link text-uppercase" href="/play">Play <i class="fa fa-play ml-2 purple" aria-hidden="true"></i> </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-uppercase text-right" href="/results">Results <i class="fa fa-trophy ml-2 purple" aria-hidden="true"></i> </a>
+            </li>
+        </ul>
     </div>
 </nav>

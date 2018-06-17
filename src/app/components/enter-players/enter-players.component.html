@@ -1,27 +1,15 @@
-<div class="container">
-    <div [hidden]="submitted">
-        <h1>Player Form</h1>
-        <form (ngSubmit)="onSubmit()" #playerForm="ngForm">
-            <div class="form-group">
-                <label for="name">Name</label>
-                <input type="text" class="form-control" id="name" required [(ngModel)]="model.name" name="name" #name="ngModel">
-                <div [hidden]="name.valid || name.pristine" class="alert alert-danger">
-                    Name is required
-                </div>
-            </div>
+<div class="player-forms">
+    <span class="text-uppercase">first player  </span>
+    <i class="fa fa-times purple-icon" aria-hidden="true"></i>
 
-            <button type="submit" class="btn btn-success" [disabled]="!playerForm.form.valid">Submit</button>
-            <button type="button" class="btn btn-default" (click)="newPlayer(); playerForm.reset()">New Player</button>
-        </form>
-    </div>
+    <input type="text" class="form-control" id="first-player" placeholder="first player" required [(ngModel)]="firstPlayer">
 
-    <div [hidden]="!submitted">
-        <h2>You submitted the following:</h2>
-        <div class="row">
-            <div class="col-xs-3">Name</div>
-            <div class="col-xs-9  pull-left">{{ model.name }}</div>
-        </div>
-        <br>
-        <button class="btn btn-primary" (click)="submitted=false">Edit</button>
-    </div>
+    <button type="button" class="btn btn-default" (click)="submitFirstPlayer()">Create First Player</button>
+
+    <br /><br /><br />
+    <span class="text-uppercase">second player  </span>
+    <i class="fa fa-circle-o purple-icon" aria-hidden="true"></i>
+    <input type="text" class="form-control" id="second-player" placeholder="second player" required [(ngModel)]="secondPlayer">
+    <br /><br /><br />
+    <button type="button" class="btn btn-default" (click)="submitSecondPlayer()">Create Second Player</button>
 </div>

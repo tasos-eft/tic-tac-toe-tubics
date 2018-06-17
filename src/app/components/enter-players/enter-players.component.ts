@@ -11,21 +11,29 @@ import { Player } from '../../player';
   styleUrls: ['./enter-players.component.scss']
 })
 export class EnterPlayersComponent implements OnInit {
-
-  model = new Player(1, 'Dr Who', null);
-
-  submitted = false;
+  firstPlayer: string;
+  secondPlayer: string;
+  model: Player;
+  submitted: boolean;
 
   constructor() { }
 
   ngOnInit() {
+    this.submitted = false;
+    this.model = new Player(1, 'Dr Who', null);
   }
 
-  newPlayer() {
-    this.model = new Hero(42, '', '');
-    console.log(this.model);
+  submitFirstPlayer() {
+    console.log('\n first player ', this.firstPlayer, '\n second player ', this.secondPlayer);
   }
 
-  onSubmit() { this.submitted = true; }
+  submitSecondPlayer() {
+    console.log('\n first player ', this.firstPlayer, '\n second player ', this.secondPlayer);
+  }
+
+  onSubmit() {
+    this.submitted = true;
+  }
 
 }
+

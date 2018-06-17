@@ -11,7 +11,7 @@ import { Player } from '../../player';
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent implements OnInit {
-  player: string;
+  players: string;
 
   constructor(
     private router: Router,
@@ -22,13 +22,17 @@ export class HomePageComponent implements OnInit {
   ngOnInit() {
   }
 
+  newPlayer() {
+    this.router.navigate(['/enter-players']);
+  }
+
   createPlayer() {
     const url = '/players/create-player/';
-    const data = { players: this.getPlayers() };
+    const data = { players: this.retrievePlayers() };
     this.nodeApiService
       .postData(url, data)
-      .then(players => {
-        console.log(players);
+      .then(playerData => {
+        console.log(playerData);
       })
       .catch(error => {
         this.router.navigate(['/']);
@@ -40,7 +44,7 @@ export class HomePageComponent implements OnInit {
     this.nodeApiService
       .getData(url)
       .then(allPlayers => {
-        console.log(players);
+        console.log(allPlayers);
         this.players = allPlayers;
       })
       .catch(error => {
@@ -48,24 +52,14 @@ export class HomePageComponent implements OnInit {
       });
   }
 
-  private getPlayers() {
-    let players = null;
-    if (this.testLocalStorage()) {
-      players = localStorage.getItem('players');
-    } else {
-      players = this.dataStoreService.pullData().players;
-    }
-    return players;
-  }
-
   private retrievePlayers() {
-    let players = null;
+    let storedPlayers = null;
     if (this.testLocalStorage()) {
-      players = localStorage.getItem('players');
+      storedPlayers = localStorage.getItem('players');
     } else {
-      players = this.dataStoreService.pullData().players;
+      storedPlayers = this.dataStoreService.pullData().players;
     }
-    return players;
+    return storedPlayers;
   }
   /*
    * local storage check

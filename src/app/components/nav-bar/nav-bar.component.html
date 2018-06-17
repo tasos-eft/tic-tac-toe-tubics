@@ -1,8 +1,8 @@
 <!-- Navigation -->
 <nav class="navbar navbar-light my-5">
-    <a class="navbar-brand text-uppercase" [ngClass]="{'hidden': displayed}" href="/">
+    <a class="navbar-brand text-uppercase" [ngClass]="{'hidden': displayed}" routerLink="/">
         Tic <i class="fa fa-times mx-3 purple" aria-hidden="true"></i> 
-        Tac <i class="fa fa-circle-thin mx-3 purple" aria-hidden="true"></i>
+        Tac <i class="fa fa-circle mx-3 purple" aria-hidden="true"></i>
         Toe
     </a>
 
@@ -15,10 +15,10 @@
     <div class="collapse navbar-collapse" [ngClass]="{'displayed': displayed}">
         <ul class="navbar-nav ml-auto">
             <li class="nav-item">
-                <a class="nav-link text-uppercase" href="/play">Play <i class="fa fa-play ml-2 purple" aria-hidden="true"></i> </a>
+                <a class="nav-link text-uppercase" routerLink="/play-game">Play <i class="fa fa-play ml-2 purple" aria-hidden="true"></i> </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-uppercase text-right" href="/results">Results <i class="fa fa-trophy ml-2 purple" aria-hidden="true"></i> </a>
+                <a class="nav-link text-uppercase text-right" routerLink="/display-results">Results <i class="fa fa-trophy ml-2 purple" aria-hidden="true"></i> </a>
             </li>
         </ul>
     </div>

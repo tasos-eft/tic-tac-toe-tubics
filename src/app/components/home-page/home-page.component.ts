@@ -3,13 +3,14 @@ import { Router } from '@angular/router';
 import { slideUp } from '../../animations/slide-up';
 import { NodeApiService } from '../../services/node-api.service';
 import { DataStoreService } from '../../services/data-store.service';
+import { Player } from '../../player';
 
 @Component({
-  selector: 'app-play-game',
-  templateUrl: './play-game.component.html',
-  styleUrls: ['./play-game.component.scss']
+  selector: 'app-home-page',
+  templateUrl: './home-page.component.html',
+  styleUrls: ['./home-page.component.scss']
 })
-export class PlayGameComponent implements OnInit {
+export class HomePageComponent implements OnInit {
   player: string;
 
   constructor(
@@ -21,13 +22,26 @@ export class PlayGameComponent implements OnInit {
   ngOnInit() {
   }
 
-  playerService() {
-    const url = '/players/read-player/';
+  createPlayer() {
+    const url = '/players/create-player/';
     const data = { players: this.getPlayers() };
     this.nodeApiService
       .postData(url, data)
       .then(players => {
         console.log(players);
+      })
+      .catch(error => {
+        this.router.navigate(['/']);
+      });
+  }
+
+  getAllPlayers() {
+    const url = '/players/read-player/';
+    this.nodeApiService
+      .getData(url)
+      .then(allPlayers => {
+        console.log(players);
+        this.players = allPlayers;
       })
       .catch(error => {
         this.router.navigate(['/']);

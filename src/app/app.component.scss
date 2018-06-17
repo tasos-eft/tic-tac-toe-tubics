@@ -1,1 +1,12 @@
 @import "/styles/animations";
+@media (min-width: 1200px) {
+    .container {
+        max-width: 720px;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        max-width: 720px;
+    }
+}

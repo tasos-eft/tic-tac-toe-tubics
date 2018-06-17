@@ -14,7 +14,7 @@ router.post('/create-player/', (req, res) => {
      */
 });
 
-router.get('/read-player/', (req, res) => {
+router.get('/read-players/', (req, res) => {
     /* 
      * 
      */

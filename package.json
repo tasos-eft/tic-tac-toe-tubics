@@ -26,7 +26,6 @@
         "@angular/platform-browser": "^6.0.3",
         "@angular/platform-browser-dynamic": "^6.0.3",
         "@angular/router": "^6.0.3",
-        "angular-font-awesome": "^3.1.2",
         "body-parser": "^1.18.3",
         "bootstrap": "^4.1.1",
         "compression": "^1.7.2",

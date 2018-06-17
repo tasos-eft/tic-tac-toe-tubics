@@ -6,26 +6,19 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./nav-bar.component.scss']
 })
 export class NavBarComponent implements OnInit {
-  show: boolean;
-  squeeze: boolean;
+  displayed: boolean;
   spring: boolean;
 
   constructor() { }
 
   ngOnInit() {
-    this.show = false;
-    this.squeeze = false;
+    this.displayed = false;
     this.spring = false;
   }
 
   toggleSpring() {
-    this.show = !this.show;
+    this.displayed = !this.displayed;
     this.spring = !this.spring;
-  }
-
-  toggleSqueeze() {
-    this.squeeze = !this.squeeze;
-    this.show = !this.show;
   }
 
 }

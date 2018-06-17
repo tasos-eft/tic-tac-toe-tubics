@@ -1,11 +1,15 @@
+<!-- <div class="ripple-overlay">
+    <div class="ripple-ui"></div>
+</div> -->
 <!--CONTAINER -->
-<div class="container-fluid h-100">
+<div class="container h-100">
     <!--ROW -->
     <div class="row h-100">
         <!--COL-12 -->
         <div class="col-12">
             <!--NAV -->
             <app-nav-bar></app-nav-bar>
+            <router-outlet #state="outlet"></router-outlet>
             <!--/NAV -->
         </div>
         <!--/COL-12 -->

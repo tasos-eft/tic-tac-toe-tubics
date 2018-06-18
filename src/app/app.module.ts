@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule } from '@angular/forms';
+import { ModalModule } from 'ngx-bootstrap';
 
 import { AppComponent } from './app.component';
 import { AppRouting } from './app.routing';
@@ -34,7 +35,8 @@ import { HomePageComponent } from './components/home-page/home-page.component';
     HttpModule,
     AppRouting,
     BrowserAnimationsModule,
-    FormsModule
+    FormsModule,
+    ModalModule.forRoot()
   ],
   providers: [NodeApiService, DataStoreService],
   bootstrap: [AppComponent]

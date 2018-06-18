@@ -28,7 +28,7 @@ export class EnterPlayersComponent implements OnInit {
 
   submitPlayer(playerOne, playerTwo) {
     if (playerOne !== playerTwo) {
-      /* store players' data localy and redirect to play */
+      /* store players' data locally and redirect to play */
       const p1 = new Player(playerOne, 1, 0, true);
       const p2 = new Player(playerTwo, 2, 0, true);
       if (this.testLocalStorage()) {

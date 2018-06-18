@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { slideUp } from '../../animations/slide-up';
+import { BsModalService } from 'ngx-bootstrap/modal';
+import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
 import { NodeApiService } from '../../services/node-api.service';
 import { DataStoreService } from '../../services/data-store.service';
 import { Player } from '../../player';
@@ -29,11 +30,13 @@ export class PlayGameComponent implements OnInit {
   p6d: boolean;
   winner: Player;
   color: string;
+  bsModalRef: BsModalRef;
 
   constructor(
     private router: Router,
     private nodeApiService: NodeApiService,
-    private dataStoreService: DataStoreService
+    private dataStoreService: DataStoreService,
+    private modalService: BsModalService
   ) { }
 
   ngOnInit() {
@@ -84,6 +87,10 @@ export class PlayGameComponent implements OnInit {
           this.winner = this.firstPlayer;
           /* winner color */
           this.color = 'pink';
+          this.endGame();
+        } else if (this.moves === 9) {
+          this.winner = null;
+          this.endGame();
         }
       }
     } else {
@@ -91,14 +98,34 @@ export class PlayGameComponent implements OnInit {
       if (this.moves >= 5) {
         hasWon = this.checkWinner(this.secondPlayed);
         if (hasWon) {
-          this.winner = this.firstPlayer;
+          this.winner = this.secondPlayer;
           /* winner color */
           this.color = 'purple';
+          this.endGame();
+        } else if (this.moves === 9) {
+          this.winner = null;
+          this.endGame();
         }
       }
     }
     /* change player */
     this.firstTurn = !this.firstTurn;
+  }
+
+  postWinner(winner) {
+    this.nodeApiService.postData('/players/find-player/', winner);
+  }
+
+  endGame() {
+    this.clearStorage();
+    console.log(this.winner);
+  }
+
+  private clearStorage() {
+    this.dataStoreService.pushData({});
+    if (this.testLocalStorage()) {
+      localStorage.clear();
+    }
   }
 
   /* compares player moves against winning patterns */
@@ -160,11 +187,10 @@ export class PlayGameComponent implements OnInit {
   private retrievePlayers() {
     let players = null;
     if (this.testLocalStorage()) {
-      players = localStorage.getItem('players');
+      players = JSON.parse(localStorage.getItem('players'));
     } else {
       players = this.dataStoreService.pullData().players;
     }
-    console.log(players);
     return players;
   }
   /*

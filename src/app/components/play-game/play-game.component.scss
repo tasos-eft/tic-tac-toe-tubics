@@ -66,6 +66,9 @@
                 &.X-icon {
                     color: $pink-color;
                 }
+                @media (min-width: 768px) {
+                    font-size: 6rem;
+                }
             }
             &:focus {
                 outline: 0;

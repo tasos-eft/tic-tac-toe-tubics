@@ -9,3 +9,15 @@
     <div class="winning-stroke-horizontal {{color}}" [ngClass]="{'strike-ha': p0h, 'strike-hb': p3h, 'strike-hc': p6h}"></div>
     <div class="winning-stroke-diagonal {{color}}" [ngClass]="{'strike-45': p0d, 'strike-135': p6d}"></div>
 </div>
+
+<ng-template #results>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Modal</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+            <span aria-hidden="true">&times;</span>
+          </button>
+    </div>
+    <div class="modal-body">
+        This is a modal.
+    </div>
+</ng-template>

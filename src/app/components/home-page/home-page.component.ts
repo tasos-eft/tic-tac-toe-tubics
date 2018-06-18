@@ -46,7 +46,7 @@ export class HomePageComponent implements OnInit {
   private retrievePlayers() {
     let storedPlayers = null;
     if (this.testLocalStorage()) {
-      storedPlayers = localStorage.getItem('players');
+      storedPlayers = JSON.parse(localStorage.getItem('players'));
     } else {
       storedPlayers = this.dataStoreService.pullData().players;
     }

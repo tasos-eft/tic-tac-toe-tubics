@@ -1,15 +1,17 @@
 <div class="player-forms">
-    <span class="text-uppercase">first player  </span>
-    <i class="fa fa-times purple-icon" aria-hidden="true"></i>
+    <p class="text-uppercase mb-0">first player </p>
+    <input type="text" class="form-control" placeholder="X" [(ngModel)]="firstPlayer.name" (ngModelChange)="firstPlayer.validatePlayer($event)" name="firstPlayer.name">
+    <span class="message" [ngClass]="{'show-message': !firstPlayer.validator}"> * field is required </span>
+    <button type="button" class="btn btn-light btn-block bnt-submit" [disabled]="!firstPlayer.validator" (click)="submitPlayer(firstPlayer.name, 1)"> 
+        <i class="fa fa-times purple-icon" aria-hidden="true"></i> player
+    </button>
 
-    <input type="text" class="form-control" id="first-player" placeholder="first player" required [(ngModel)]="firstPlayer">
+    <hr>
 
-    <button type="button" class="btn btn-default" (click)="submitFirstPlayer()">Create First Player</button>
-
-    <br /><br /><br />
-    <span class="text-uppercase">second player  </span>
-    <i class="fa fa-circle-o purple-icon" aria-hidden="true"></i>
-    <input type="text" class="form-control" id="second-player" placeholder="second player" required [(ngModel)]="secondPlayer">
-    <br /><br /><br />
-    <button type="button" class="btn btn-default" (click)="submitSecondPlayer()">Create Second Player</button>
+    <p class="text-uppercase mt-4 mb-0">second player </p>
+    <input type="text" class="form-control" placeholder="O" [(ngModel)]="secondPlayer.name" (ngModelChange)="secondPlayer.validatePlayer($event)" name="secondPlayer.name">
+    <span class="message" [ngClass]="{'show-message': !secondPlayer.validator}"> * field is required </span>
+    <button type="button" class="btn btn-light btn-block bnt-submit" [disabled]="!secondPlayer.validator" (click)="submitPlayer(firstPlayer.name, 2)">  
+        <i class="fa fa-circle-o purple-icon" aria-hidden="true"></i> player
+    </button>
 </div>

@@ -40,5 +40,13 @@ html {
                 outline-color: #6451c3;
             }
         }
+        span {
+            display: block;
+            margin-top: 0.5rem;
+            @media (min-width: 768px) {
+                display: inline-block;
+                margin-top: 0;
+            }
+        }
     }
 }

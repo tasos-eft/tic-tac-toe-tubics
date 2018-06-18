@@ -1,9 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { slideUp } from '../../animations/slide-up';
 import { NodeApiService } from '../../services/node-api.service';
 import { DataStoreService } from '../../services/data-store.service';
-import { Player } from '../../player';
+import { Player } from '../../Player';
 
 @Component({
   selector: 'app-enter-players',
@@ -11,29 +10,48 @@ import { Player } from '../../player';
   styleUrls: ['./enter-players.component.scss']
 })
 export class EnterPlayersComponent implements OnInit {
-  firstPlayer: string;
-  secondPlayer: string;
-  model: Player;
-  submitted: boolean;
+  firstPlayer: Player;
+  secondPlayer: Player;
 
-  constructor() { }
+  constructor(
+    private router: Router,
+    private nodeApiService: NodeApiService,
+    private dataStoreService: DataStoreService
+  ) { }
 
   ngOnInit() {
-    this.submitted = false;
-    this.model = new Player(1, 'Dr Who', null);
+    this.firstPlayer = new Player(null, null, null, false);
+    this.secondPlayer = new Player(null, null, null, false);
   }
 
-  submitFirstPlayer() {
-    console.log('\n first player ', this.firstPlayer, '\n second player ', this.secondPlayer);
-  }
+  submitPlayer(name, turn) {
+    const readUrl = '/players/find-player/';
+    const readData = { name: name };
 
-  submitSecondPlayer() {
-    console.log('\n first player ', this.firstPlayer, '\n second player ', this.secondPlayer);
+    const createdPlayer = new Player( name, turn, 0, true);
+    const createUrl = '/players/create-player/';
+    const createData = JSON.stringify(createdPlayer);
+    console.log('createData', createData);
+    /* check if player name already exists */
+    this.nodeApiService.postData(readUrl, readData)
+      .then(player => {
+        console.log('player', player);
+        let response = null;
+        if (player) {
+          response = player;
+        } else {
+          console.log('createData', createData);
+          response = this.nodeApiService.postData(createUrl, createData);
+        }
+        return response;
+      })
+      .then(response => {
+        console.log('response', response);
+      })
+      .catch(error => {
+        console.log('error', error);
+      });
   }
-
-  onSubmit() {
-    this.submitted = true;
-  }
-
 }
+
 

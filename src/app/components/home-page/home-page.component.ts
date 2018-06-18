@@ -26,32 +26,6 @@ export class HomePageComponent implements OnInit {
     this.router.navigate(['/enter-players']);
   }
 
-  createPlayer() {
-    const url = '/players/create-player/';
-    const data = { players: this.retrievePlayers() };
-    this.nodeApiService
-      .postData(url, data)
-      .then(playerData => {
-        console.log(playerData);
-      })
-      .catch(error => {
-        this.router.navigate(['/']);
-      });
-  }
-
-  getAllPlayers() {
-    const url = '/players/read-player/';
-    this.nodeApiService
-      .getData(url)
-      .then(allPlayers => {
-        console.log(allPlayers);
-        this.players = allPlayers;
-      })
-      .catch(error => {
-        this.router.navigate(['/']);
-      });
-  }
-
   private retrievePlayers() {
     let storedPlayers = null;
     if (this.testLocalStorage()) {

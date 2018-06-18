@@ -1,8 +1,17 @@
 export class Player {
     constructor(
-        public id: number,
         public name: string,
-        public score: string
-      ) {  }
+        public turn: number,
+        public score: number,
+        public validator: boolean
+    ) { }
+
+    validatePlayer(input) {
+        if (input) {
+            this.validator = true;
+        } else {
+            this.validator = false;
+        }
+    }
 }
 

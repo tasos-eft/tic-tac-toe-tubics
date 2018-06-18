@@ -4,10 +4,93 @@
         font-size: 2rem;
         line-height: 2rem;
     }
-    .purple-icon {
-        color: $purple-color;
-        font-size: 3rem;
-        line-height: 3rem;
-        margin-left: 1.5rem;
+    .form-control {
+        color: $light-color;
+        height: 50px;
+        border-radius: 0;
+        margin-bottom: 2rem;
+        background-color: transparent;
+        border-top: 0;
+        border-left: 0;
+        border-right: 0;
+        border-bottom: 2px solid $light-color;
+        font-size: 1.5rem;
+        &:active,
+        &:focus,
+        &:visited {
+            box-shadow: none;
+            border-bottom: 2px solid $purple-color;
+            color: $purple-color;
+            &::-webkit-input-placeholder {
+                color: $purple-color;
+            }
+            &::-moz-placeholder {
+                color: $purple-color;
+            }
+            &:-ms-input-placeholder {
+                color: $purple-color;
+            }
+            &:-moz-placeholder {
+                color: $purple-color;
+            }
+        }
+        &::-webkit-input-placeholder {
+            color: rgba($color: $light-color, $alpha: 0.25);
+        }
+        &::-moz-placeholder {
+            color: rgba($color: $light-color, $alpha: 0.25);
+        }
+        &:-ms-input-placeholder {
+            color: rgba($color: $light-color, $alpha: 0.25);
+        }
+        &:-moz-placeholder {
+            color: rgba($color: $light-color, $alpha: 0.25);
+        }
+    }
+    hr {
+        border-top: 1px solid rgba($color: $light-color, $alpha: 0.25);
+        margin-top: 3rem;
+        margin-bottom: 3rem;
+    }
+    .message {
+        display: block;
+        padding-bottom: 1.5rem;
+        font-size: 1rem;
+        color: $pink-color;
+        visibility: hidden;
+        opacity: 0;
+        transition: all 0.3s ease-in-out 0s;
+        &.show-message {
+            visibility: visible;
+            opacity: 1;
+        }
+    }
+    .bnt-submit {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: transparent;
+        height: 50px;
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        color: $light-color;
+        border-radius: 0;
+        border: 2px solid $light-color;
+        &:hover,
+        &:active,
+        &:focus {
+            border: 3px solid $purple-color;
+            color: $purple-color;
+            box-shadow: none;
+            >.purple-icon {
+                color: $purple-color;
+            }
+        }
+        .purple-icon {
+            color: $light-color;
+            font-size: 2rem;
+            line-height: 2rem;
+            margin-right: 2rem;
+        }
     }
 }

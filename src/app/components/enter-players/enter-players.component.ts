@@ -41,7 +41,7 @@ export class EnterPlayersComponent implements OnInit {
           response = player;
         } else {
           console.log('createData', createData);
-          response = this.nodeApiService.postData(createUrl, createData);
+          response = this.nodeApiService.postData(createUrl, createdPlayer);
         }
         return response;
       })

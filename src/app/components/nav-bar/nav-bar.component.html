@@ -6,11 +6,11 @@
         Toe
     </a>
 
-    <button class="hamburger hamburger--spring" type="button" [ngClass]="{'is-active':spring}" (click)="toggleSpring()" [attr.aria-expanded]="!collapsed" aria-controls="collapseBasic">
-            <span class="hamburger-box">
-                <span class="hamburger-inner"></span>
-            </span>
-        </button>
+    <button class="hamburger hamburger--spring" type="button" [ngClass]="{'is-active':spring}" (click)="toggleSpring()">
+        <span class="hamburger-box">
+            <span class="hamburger-inner"></span>
+        </span>
+    </button>
 
     <div class="collapse navbar-collapse" [ngClass]="{'displayed': displayed}">
         <ul class="navbar-nav ml-auto">

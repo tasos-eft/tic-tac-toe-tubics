@@ -67,20 +67,21 @@
         position: absolute;
         background-color: $purple-color;
         top: 16.66666666%;
-        width: 100%;
-        height: 3px;
-        transition: width 2s, height 4s;
+        left: 0;
+        width: 0;
+        height: 0;
+        transition: width 4s, height 2s;
         &.strike-ha {
-            left: 16%;
             width: 100%;
             height: 3px;
         }
         &.strike-hb {
+            top: 50%;
             width: 100%;
             height: 3px;
         }
-        &.strike-hb {
-            left: 83%;
+        &.strike-hc {
+            top: 83%;
             width: 100%;
             height: 3px;
         }
@@ -89,7 +90,6 @@
         position: absolute;
         background-color: $purple-color;
         top: 0;
-        bottom: 0;
         width: 0px;
         height: 0%;
         transition: width 2s, height 4s;
@@ -102,7 +102,7 @@
             width: 3px;
             height: 100%;
         }
-        &.strike-vb {
+        &.strike-vc {
             left: 83%;
             width: 3px;
             height: 100%;
@@ -112,9 +112,19 @@
         position: absolute;
         background-color: $purple-color;
         top: 50%;
-        width: 150%;
-        height: 3px;
+        width: 0;
+        height: 0;
         transform: rotate(55deg);
         transform-origin: 50% 50% 0;
+        transition: width 4s, height 2s;
+        &.strike-45 {
+            width: 150%;
+            height: 3px;
+        }
+        .strike-135 {
+            width: 150%;
+            height: 3px;
+            transform: rotate(125deg);
+        }
     }
 }

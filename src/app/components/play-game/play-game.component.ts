@@ -15,8 +15,7 @@ export class PlayGameComponent implements OnInit {
   firstPlayer: Player;
   secondPlayer: Player;
   players: Player[];
-  /* when true, second player plays */
-  turn: boolean;
+  firstTurn: boolean;
   cells: number[];
   firstPlayed: boolean[];
   secondPlayed: boolean[];
@@ -28,19 +27,32 @@ export class PlayGameComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    /* retrieves players from localstorage or from memory */
     this.players = this.retrievePlayers();
-    console.log('players', this.players);
+    /* store first and second player */
     this.firstPlayer = this.players[0];
     this.secondPlayer = this.players[1];
-    this.turn = false;
+    /* when true, first player plays */
+    this.firstTurn = true;
+    /* 3x3 grid */
     this.cells = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-    this.firstPlayed = [true, false, true, false, false, false, false, false, false];
-    this.secondPlayed = [false, true, false, false, false, false, false, false, false];
+    /* first player's moves on each grid cell (0-8) */
+    this.firstPlayed = [false, false, false, false, false, false, false, false, false];
+    /* second player's moves on each grid cell (0-8) */
+    this.secondPlayed = [false, false, false, false, false, false, false, false, false];
   }
 
   play(position) {
-    this.turn = !this.turn;
+    this.firstTurn = !this.firstTurn;
     console.log('position', position);
+    /* first player plays, else second player plays */
+    if (this.firstTurn) {
+      this.firstPlayed[position] = true;
+    } else {
+      this.secondPlayed[position] = true;
+    }
+    console.log('first played', this.firstPlayed[position]);
+    console.log('second played', this.secondPlayed[position]);
   }
 
   private retrievePlayers() {

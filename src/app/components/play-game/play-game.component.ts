@@ -64,22 +64,20 @@ export class PlayGameComponent implements OnInit {
 
   play(position) {
     this.firstTurn = !this.firstTurn;
-    console.log('position', position);
+    /* total moves */
+    this.moves++;
     /* first player plays, else second player plays */
     if (this.firstTurn) {
       this.firstPlayed[position] = true;
-      if (this.moves > 5) {
-        this.checkWinner(this.firstPlayed[position]);
+      if (this.moves >= 5) {
+        this.checkWinner(this.firstPlayed);
       }
     } else {
       this.secondPlayed[position] = true;
-      if (this.moves > 5) {
-        this.checkWinner(this.secondPlayed[position]);
+      if (this.moves >= 5) {
+        this.checkWinner(this.secondPlayed);
       }
     }
-    console.log('first played', this.firstPlayed[position]);
-    console.log('second played', this.secondPlayed[position]);
-    this.moves++;
   }
 
   /* compares player moves against winning patterns */
@@ -94,25 +92,45 @@ export class PlayGameComponent implements OnInit {
     * p0d: d0 d4 d8 on 0
     * p6d: d2 d4 d6 on 6
     */
-    const winningPatterns = [
-      { name: 'p0h', pattern: [true, true, true, 'null', 'null', 'null', 'null', 'null', 'null'] },
-      { name: 'p3h', pattern: ['null', 'null', 'null', true, true, true, 'null', 'null', 'null'] },
-      { name: 'p6h', pattern: ['null', 'null', 'null', 'null', 'null', 'null', true, true, true] },
-      { name: 'p0v', pattern: [true, 'null', 'null', true, 'null', 'null', true, 'null', 'null'] },
-      { name: 'p1v', pattern: ['null', true, 'null', 'null', true, 'null', 'null', true, 'null'] },
-      { name: 'p2v', pattern: ['null', 'null', true, 'null', 'null', true, 'null', 'null', true] },
-      { name: 'p0d', pattern: [true, 'null', 'null', 'null', true, 'null', 'null', 'null', true] },
-      { name: 'p6d', pattern: ['null', 'null', true, 'null', true, 'null', true, 'null', 'null'] }
-    ];
-    /*                           0      1       2       3        4       5       6      7       8 */
-
-    for (let j = 0; j < 8; j++) {
-      for (let i = 0; i < 9; i++) {
-        if (winningPatterns[j].pattern[i] === true && playerMoves[i] === true) {
-          console.log('hit', winningPatterns[j]);
-        }
-      }
+    let combination = '';
+    /* horizontal */
+    if (playerMoves[0] === true && playerMoves[1] === true && playerMoves[2] === true) {
+      combination = 'p0h';
+      this.p0h = true;
     }
+    if (playerMoves[3] === true && playerMoves[4] === true && playerMoves[5] === true) {
+      combination = 'p3h';
+      this.p3h = true;
+    }
+    if (playerMoves[6] === true && playerMoves[7] === true && playerMoves[8] === true) {
+      combination = 'p6h';
+      this.p6h = true;
+    }
+
+    /* vertical */
+    if (playerMoves[0] === true && playerMoves[3] === true && playerMoves[6] === true) {
+      combination = 'p0v';
+      this.p0v = true;
+    }
+    if (playerMoves[1] === true && playerMoves[4] === true && playerMoves[7] === true) {
+      combination = 'p1v';
+      this.p1v = true;
+    }
+    if (playerMoves[2] === true && playerMoves[5] === true && playerMoves[8] === true) {
+      combination = 'p2v';
+      this.p2v = true;
+    }
+
+    /* diagonal */
+    if (playerMoves[0] === true && playerMoves[4] === true && playerMoves[8] === true) {
+      combination = 'p0d';
+      this.p0d = true;
+    }
+    if (playerMoves[2] === true && playerMoves[4] === true && playerMoves[6] === true) {
+      combination = 'p6d';
+      this.p6d = true;
+    }
+    console.log('winning combination', combination);
   }
 
   private retrievePlayers() {

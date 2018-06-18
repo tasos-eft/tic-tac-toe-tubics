@@ -1,39 +1,52 @@
 @import "../../styles/_constants";
 .play-game {
     display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-flow: column;
-    .btn-purple {
-        width: 100%;
-        padding: 1rem 1.25rem;
-        border-radius: 0%;
-        border-width: 2px;
-        font-size: 1.125rem;
-        color: $pink-color;
-        border-color: $pink-color;
-        &:active,
-        &:hover {
-            color: #fff;
-            background-color: $pink-color;
-            border-color: $pink-color;
+    /* establish flex container */
+    flex-wrap: wrap;
+    /* enable flex items to wrap */
+    justify-content: space-around;
+    // justify-content: center;
+    .grid-cell {
+        flex: 0 0 33.333333%;
+        /* don't grow, don't shrink, width */
+        height: auto;
+        margin: 0px;
+        padding: 0;
+        border: 1px solid transparent;
+        &:nth-child(1) {
+            border-right: 1px solid $light-color;
+            border-bottom: 1px solid $light-color;
         }
-        &:first-child {
-            margin-bottom: 2rem;
+        &:nth-child(2) {
+            border-bottom: 1px solid $light-color;
         }
-        &:last-child {
-            margin-top: 2rem;
+        &:nth-child(3) {
+            border-left: 1px solid $light-color;
+            border-bottom: 1px solid $light-color;
         }
-        @media (min-width: 768px) {
-            padding: 1.25rem 2rem;
-            font-size: 2.125rem;
-            border-width: 3px;
-            &:first-child {
-                margin-bottom: 4rem;
-            }
-            &:last-child {
-                margin-top: 4rem;
-            }
+        &:nth-child(4) {
+            border-right: 1px solid $light-color;
+            border-bottom: 1px solid $light-color;
+        }
+        &:nth-child(5) {
+            border-bottom: 1px solid $light-color;
+        }
+        &:nth-child(6) {
+            border-left: 1px solid $light-color;
+            border-bottom: 1px solid $light-color;
+        }
+        &:nth-child(7) {
+            border-right: 1px solid $light-color;
+        }
+        &:nth-child(9) {
+            border-left: 1px solid $light-color;
+        }
+        .grid-container {
+            height: 100%;
+            background-color: blue;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
     }
 }

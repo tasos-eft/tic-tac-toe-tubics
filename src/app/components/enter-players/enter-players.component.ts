@@ -12,6 +12,7 @@ import { Player } from '../../player';
 export class EnterPlayersComponent implements OnInit {
   firstPlayer: Player;
   secondPlayer: Player;
+  nameValidator: boolean;
 
   constructor(
     private router: Router,
@@ -22,35 +23,39 @@ export class EnterPlayersComponent implements OnInit {
   ngOnInit() {
     this.firstPlayer = new Player(null, null, null, false);
     this.secondPlayer = new Player(null, null, null, false);
+    this.nameValidator = false;
   }
 
-  submitPlayer(name, turn) {
-    const readUrl = '/players/find-player/';
-    const readData = { name: name };
+  submitPlayer(playerOne, playerTwo) {
+    if (playerOne !== playerTwo) {
+      /* store players' data localy and redirect to play */
+      const p1 = new Player(playerOne, 1, 0, true);
+      const p2 = new Player(playerTwo, 2, 0, true);
+      if (this.testLocalStorage()) {
+        localStorage.removeItem('players');
+        localStorage.setItem('players', JSON.stringify([p1, p2]));
+      } else {
+        this.dataStoreService.pushData({ players: [p1, p2] });
+      }
+      this.router.navigate(['/play-game']);
+    } else {
+      this.secondPlayer.validator = false;
+      this.nameValidator = true;
+    }
+  }
 
-    const createdPlayer = new Player( name, turn, 0, true);
-    const createUrl = '/players/create-player/';
-    const createData = JSON.stringify(createdPlayer);
-    console.log('createData', createData);
-    /* check if player name already exists */
-    this.nodeApiService.postData(readUrl, readData)
-      .then(player => {
-        console.log('player', player);
-        let response = null;
-        if (player) {
-          response = player;
-        } else {
-          console.log('createData', createData);
-          response = this.nodeApiService.postData(createUrl, createdPlayer);
-        }
-        return response;
-      })
-      .then(response => {
-        console.log('response', response);
-      })
-      .catch(error => {
-        console.log('error', error);
-      });
+  /*
+   * local storage check
+   */
+  private testLocalStorage() {
+    try {
+      localStorage.setItem('mod', 'mod');
+      localStorage.removeItem('mod');
+      return true;
+    } catch (e) {
+      console.log('does not supports local storage');
+      return false;
+    }
   }
 }
 

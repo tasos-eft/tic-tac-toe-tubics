@@ -63,7 +63,6 @@ export class PlayGameComponent implements OnInit {
   }
 
   play(position) {
-    this.firstTurn = !this.firstTurn;
     /* total moves */
     this.moves++;
     /* first player plays, else second player plays */
@@ -78,6 +77,8 @@ export class PlayGameComponent implements OnInit {
         this.checkWinner(this.secondPlayed);
       }
     }
+    /* change player */
+    this.firstTurn = !this.firstTurn;
   }
 
   /* compares player moves against winning patterns */

@@ -42,16 +42,24 @@
         &:nth-child(9) {
             border-left: 1px solid $light-color;
         }
-        .grid-container {
+        .btn-grid {
             position: relative;
             display: flex;
             align-items: center;
             justify-content: center;
             height: 100%;
+            background-color: transparent;
             .light-icon {
                 position: absolute;
                 font-size: 4rem;
                 color: $light-color;
+                visibility: hidden;
+                opacity: 0;
+                transition: all 0.3s ease-in-out 0s;
+                &.show {
+                    visibility: visible;
+                    opacity: 1;
+                }
             }
         }
     }

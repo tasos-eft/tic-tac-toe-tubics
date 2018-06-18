@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { slideUp } from '../../animations/slide-up';
 import { NodeApiService } from '../../services/node-api.service';
 import { DataStoreService } from '../../services/data-store.service';
+import { Player } from '../../player';
 
 @Component({
   selector: 'app-play-game',
@@ -10,7 +11,14 @@ import { DataStoreService } from '../../services/data-store.service';
   styleUrls: ['./play-game.component.scss']
 })
 export class PlayGameComponent implements OnInit {
-  player: string;
+  firstPlayer: Player;
+  secondPlayer: Player;
+  players: Player[];
+  /* when true, second player plays */
+  turn: boolean;
+  cells: number[];
+  firstPlayed: boolean[];
+  secondPlayed: boolean[];
 
   constructor(
     private router: Router,
@@ -19,29 +27,19 @@ export class PlayGameComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.players = this.retrievePlayers();
+    console.log('players', this.players);
+    this.firstPlayer = this.players[0];
+    this.secondPlayer = this.players[1];
+    this.turn = false;
+    this.cells = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    this.firstPlayed = [true, false, false, false, false, false, false, false, false];
+    this.secondPlayed = [false, true, false, false, false, false, false, false, false];
   }
 
-  playerService() {
-    const url = '/players/read-player/';
-    const data = { players: this.getPlayers() };
-    this.nodeApiService
-      .postData(url, data)
-      .then(players => {
-        console.log(players);
-      })
-      .catch(error => {
-        this.router.navigate(['/']);
-      });
-  }
+  play(position) {
+    this.turn = !this.turn;
 
-  private getPlayers() {
-    let players = null;
-    if (this.testLocalStorage()) {
-      players = localStorage.getItem('players');
-    } else {
-      players = this.dataStoreService.pullData().players;
-    }
-    return players;
   }
 
   private retrievePlayers() {

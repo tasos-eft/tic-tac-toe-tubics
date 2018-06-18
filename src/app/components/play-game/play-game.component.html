@@ -1,66 +1,66 @@
 <div class="play-game w-100 h-75">
-    <div id="cell-a" class="grid-cell">
-        <div class="grid-container" (click)="move()">
-            <i class="fa fa-times light-icon" aria-hidden="true" [ngClass]="{'purple': firstPlayer.validator}"></i>
-            <i class="fa fa-circle-o light-icon" aria-hidden="true" [ngClass]="{'purple': secondPlayer.validator}"></i>
-        </div>
+    <div *ngFor="let cell of cells; let i = index" id="cell-{{i}}" class="grid-cell">
+        <button class="btn bnt-link btn-block btn-grid" (click)="play(i)">
+            <i class="fa fa-times light-icon" aria-hidden="true" [ngClass]="{'show': firstPlayed[i]}"></i>
+            <i class="fa fa-circle-o light-icon" aria-hidden="true" [ngClass]="{'show': secondPlayed[i]}"></i>
+        </button>
     </div>
 
-    <div id="cell-b" class="grid-cell">
-        <div class="grid-container" (click)="move()">
-            <i class="fa fa-times light-icon" aria-hidden="true" [ngClass]="{'purple': firstPlayer.validator}"></i>
-            <i class="fa fa-circle-o light-icon" aria-hidden="true" [ngClass]="{'purple': secondPlayer.validator}"></i>
-        </div>
+    <!-- <div id="cell-b" class="grid-cell">
+        <button class="btn bnt-link btn-block btn-grid" (click)="play(1)">
+            <i class="fa fa-times light-icon" aria-hidden="true" [ngClass]="{'show': firstPlayed}"></i>
+            <i class="fa fa-circle-o light-icon" aria-hidden="true" [ngClass]="{'show': secondPlayed}"></i>
+        </button>
     </div>
 
     <div id="cell-c" class="grid-cell">
-        <div class="grid-container" (click)="move()">
-            <i class="fa fa-times light-icon" aria-hidden="true" [ngClass]="{'purple': firstPlayer.validator}"></i>
-            <i class="fa fa-circle-o light-icon" aria-hidden="true" [ngClass]="{'purple': secondPlayer.validator}"></i>
-        </div>
+        <button class="btn bnt-link btn-block btn-grid" (click)="play(1)">
+            <i class="fa fa-times light-icon" aria-hidden="true" [ngClass]="{'show': firstPlayed}"></i>
+            <i class="fa fa-circle-o light-icon" aria-hidden="true" [ngClass]="{'show': secondPlayed}"></i>
+        </button>
     </div>
 
     <div id="cell-d" class="grid-cell">
-        <div class="grid-container" (click)="move()">
-            <i class="fa fa-times light-icon" aria-hidden="true" [ngClass]="{'purple': firstPlayer.validator}"></i>
-            <i class="fa fa-circle-o light-icon" aria-hidden="true" [ngClass]="{'purple': secondPlayer.validator}"></i>
-        </div>
+        <button class="btn bnt-link btn-block btn-grid" (click)="play(1)">
+            <i class="fa fa-times light-icon" aria-hidden="true" [ngClass]="{'show': firstPlayed}"></i>
+            <i class="fa fa-circle-o light-icon" aria-hidden="true" [ngClass]="{'show': secondPlayed}"></i>
+        </button>
     </div>
 
     <div id="cell-e" class="grid-cell">
-        <div class="grid-container" (click)="move()">
-            <i class="fa fa-times light-icon" aria-hidden="true" [ngClass]="{'purple': firstPlayer.validator}"></i>
-            <i class="fa fa-circle-o light-icon" aria-hidden="true" [ngClass]="{'purple': secondPlayer.validator}"></i>
-        </div>
+        <button class="btn bnt-link btn-block btn-grid" (click)="play(1)">
+            <i class="fa fa-times light-icon" aria-hidden="true" [ngClass]="{'show': firstPlayed}"></i>
+            <i class="fa fa-circle-o light-icon" aria-hidden="true" [ngClass]="{'show': secondPlayed}"></i>
+        </button>
     </div>
 
     <div id="cell-f" class="grid-cell">
-        <div class="grid-container" (click)="move()">
-            <i class="fa fa-times light-icon" aria-hidden="true" [ngClass]="{'purple': firstPlayer.validator}"></i>
-            <i class="fa fa-circle-o light-icon" aria-hidden="true" [ngClass]="{'purple': secondPlayer.validator}"></i>
-        </div>
+        <button class="btn bnt-link btn-block btn-grid" (click)="play(1)">
+            <i class="fa fa-times light-icon" aria-hidden="true" [ngClass]="{'show': firstPlayed}"></i>
+            <i class="fa fa-circle-o light-icon" aria-hidden="true" [ngClass]="{'show': secondPlayed}"></i>
+        </button>
     </div>
 
     <div id="cell-g" class="grid-cell">
-        <div class="grid-container" (click)="move()">
-            <i class="fa fa-times light-icon" aria-hidden="true" [ngClass]="{'purple': firstPlayer.validator}"></i>
-            <i class="fa fa-circle-o light-icon" aria-hidden="true" [ngClass]="{'purple': secondPlayer.validator}"></i>
-        </div>
+        <button class="btn bnt-link btn-block btn-grid" (click)="play(1)">
+            <i class="fa fa-times light-icon" aria-hidden="true" [ngClass]="{'show': firstPlayed}"></i>
+            <i class="fa fa-circle-o light-icon" aria-hidden="true" [ngClass]="{'show': secondPlayed}"></i>
+        </button>
     </div>
 
     <div id="cell-h" class="grid-cell">
-        <div class="grid-container" (click)="move()">
-            <i class="fa fa-times light-icon" aria-hidden="true" [ngClass]="{'purple': firstPlayer.validator}"></i>
-            <i class="fa fa-circle-o light-icon" aria-hidden="true" [ngClass]="{'purple': secondPlayer.validator}"></i>
-        </div>
+        <button class="btn bnt-link btn-block btn-grid" (click)="play(1)">
+            <i class="fa fa-times light-icon" aria-hidden="true" [ngClass]="{'show': firstPlayed}"></i>
+            <i class="fa fa-circle-o light-icon" aria-hidden="true" [ngClass]="{'show': secondPlayed}"></i>
+        </button>
     </div>
 
     <div id="cell-i" class="grid-cell">
-        <div class="grid-container" (click)="move()">
-            <i class="fa fa-times light-icon" aria-hidden="true" [ngClass]="{'purple': firstPlayer.validator}"></i>
-            <i class="fa fa-circle-o light-icon" aria-hidden="true" [ngClass]="{'purple': secondPlayer.validator}"></i>
-        </div>
-    </div>
+        <button class="btn bnt-link btn-block btn-grid" (click)="play(1)">
+            <i class="fa fa-times light-icon" aria-hidden="true" [ngClass]="{'show': firstPlayed}"></i>
+            <i class="fa fa-circle-o light-icon" aria-hidden="true" [ngClass]="{'show': secondPlayed}"></i>
+        </button>
+    </div> -->
 
     <div class="winning-stroke-vertical"></div>
     <div class="winning-stroke-horizontal"></div>

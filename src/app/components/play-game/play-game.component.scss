@@ -50,10 +50,9 @@
             background-color: transparent;
             height: 100%;
             border-radius: 0;
-            .light-icon {
+            .game-icon {
                 position: absolute;
                 font-size: 4rem;
-                color: $light-color;
                 visibility: hidden;
                 opacity: 0;
                 transition: all 0.3s ease-in-out 0s;
@@ -61,10 +60,19 @@
                     visibility: visible;
                     opacity: 1;
                 }
+                &.X-icon {
+                    color: $purple-color;
+                }
+                &.X-icon {
+                    color: $pink-color;
+                }
             }
             &:focus {
                 outline: 0;
                 box-shadow: none;
+            }
+            &:disabled {
+                opacity: 0.95;
             }
         }
     }

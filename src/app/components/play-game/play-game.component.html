@@ -1,8 +1,8 @@
 <div class="play-game w-100 h-75">
     <div *ngFor="let cell of cells; let i = index" id="cell-{{i}}" class="grid-cell">
         <button class="btn bnt-link btn-block btn-grid" (click)="play(i)" [disabled]="firstPlayed[i] || secondPlayed[i]">
-            <i class="fa fa-times light-icon" aria-hidden="true" [ngClass]="{'show': firstPlayed[i]}"></i>
-            <i class="fa fa-circle-o light-icon" aria-hidden="true" [ngClass]="{'show': secondPlayed[i]}"></i>
+            <i class="fa fa-times game-icon X-icon" aria-hidden="true" [ngClass]="{'show': firstPlayed[i]}"></i>
+            <i class="fa fa-circle-o game-icon O-icon" aria-hidden="true" [ngClass]="{'show': secondPlayed[i]}"></i>
         </button>
     </div>
     <div class="winning-stroke-vertical" [ngClass]="{'strike-va': verticalA, 'strike-vb': verticalB, 'strike-vc': verticalC}"></div>

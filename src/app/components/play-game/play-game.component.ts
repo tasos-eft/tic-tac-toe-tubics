@@ -19,6 +19,7 @@ export class PlayGameComponent implements OnInit {
   cells: number[];
   firstPlayed: boolean[];
   secondPlayed: boolean[];
+  moves: number;
 
   constructor(
     private router: Router,
@@ -40,6 +41,8 @@ export class PlayGameComponent implements OnInit {
     this.firstPlayed = [false, false, false, false, false, false, false, false, false];
     /* second player's moves on each grid cell (0-8) */
     this.secondPlayed = [false, false, false, false, false, false, false, false, false];
+    /* players' moves counter */
+    this.moves = 0;
   }
 
   play(position) {
@@ -53,6 +56,40 @@ export class PlayGameComponent implements OnInit {
     }
     console.log('first played', this.firstPlayed[position]);
     console.log('second played', this.secondPlayed[position]);
+    this.moves++;
+    if (this.moves > 5) {
+      this.checkWinner(this.firstPlayed[position], this.secondPlayed[position]);
+    }
+  }
+
+  /* compares p1 & p2 arrays against winning patterns */
+  private checkWinner(p1, p2) {
+    /*
+    * p0h: h0 h1 h2 on 0
+    * p3h: h3 h4 h5 on 3
+    * p6h: h6 h7 h8 on 6
+    * p0v: v0 v3 v6 on 0
+    * p1v: v1 v4 v7 on 1
+    * p2v: v2 v5 v8 on 2
+    * p0d: d0 d4 d8 on 0
+    * p6d: d2 d4 d6 on 6
+    */
+    const winningPatterns = [
+      {name: 'p0h', pattern: [ true ,  true ,  true , 'null', 'null', 'null', 'null', 'null', 'null']},
+      {name: 'p3h', pattern: ['null', 'null', 'null',  true ,  true ,  true , 'null', 'null', 'null']},
+      {name: 'p6h', pattern: ['null', 'null', 'null', 'null', 'null', 'null',  true ,  true ,  true ]},
+      {name: 'p0v', pattern: [ true , 'null', 'null',  true , 'null', 'null',  true , 'null', 'null']},
+      {name: 'p1v', pattern: ['null',  true , 'null', 'null',  true , 'null', 'null',  true , 'null']},
+      {name: 'p2v', pattern: ['null', 'null',  true , 'null', 'null',  true , 'null', 'null',  true ]},
+      {name: 'p0d', pattern: [ true , 'null', 'null', 'null',  true , 'null', 'null', 'null',  true ]},
+      {name: 'p6d', pattern: ['null', 'null',  true , 'null',  true , 'null',  true , 'null', 'null']}
+    ];
+    /*                           0      1       2       3        4       5       6      7       8 */
+    if (this.firstTurn) {
+      p1 = 0;
+    } else {
+
+    }
   }
 
   private retrievePlayers() {

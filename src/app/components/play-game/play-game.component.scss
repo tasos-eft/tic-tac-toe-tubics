@@ -69,15 +69,44 @@
         top: 16.66666666%;
         width: 100%;
         height: 3px;
+        transition: width 2s, height 4s;
+        &.strike-ha {
+            left: 16%;
+            width: 100%;
+            height: 3px;
+        }
+        &.strike-hb {
+            width: 100%;
+            height: 3px;
+        }
+        &.strike-hb {
+            left: 83%;
+            width: 100%;
+            height: 3px;
+        }
     }
     .winning-stroke-vertical {
         position: absolute;
         background-color: $purple-color;
         top: 0;
-        right: 50%;
         bottom: 0;
-        width: 3px;
-        height: 100%;
+        width: 0px;
+        height: 0%;
+        transition: width 2s, height 4s;
+        &.strike-va {
+            left: 16%;
+            width: 3px;
+            height: 100%;
+        }
+        &.strike-vb {
+            width: 3px;
+            height: 100%;
+        }
+        &.strike-vb {
+            left: 83%;
+            width: 3px;
+            height: 100%;
+        }
     }
     .winning-stroke-diagonal {
         position: absolute;

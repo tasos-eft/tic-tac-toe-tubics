@@ -4,6 +4,7 @@ import { slideUp } from '../../animations/slide-up';
 import { NodeApiService } from '../../services/node-api.service';
 import { DataStoreService } from '../../services/data-store.service';
 import { Player } from '../../player';
+import { copyStyles } from '@angular/animations/browser/src/util';
 
 @Component({
   selector: 'app-play-game',
@@ -33,13 +34,13 @@ export class PlayGameComponent implements OnInit {
     this.secondPlayer = this.players[1];
     this.turn = false;
     this.cells = [1, 2, 3, 4, 5, 6, 7, 8, 9];
-    this.firstPlayed = [true, false, false, false, false, false, false, false, false];
+    this.firstPlayed = [true, false, true, false, false, false, false, false, false];
     this.secondPlayed = [false, true, false, false, false, false, false, false, false];
   }
 
   play(position) {
     this.turn = !this.turn;
-
+    console.log('position', position);
   }
 
   private retrievePlayers() {

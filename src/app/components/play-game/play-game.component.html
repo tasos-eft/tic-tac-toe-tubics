@@ -5,64 +5,7 @@
             <i class="fa fa-circle-o light-icon" aria-hidden="true" [ngClass]="{'show': secondPlayed[i]}"></i>
         </button>
     </div>
-
-    <!-- <div id="cell-b" class="grid-cell">
-        <button class="btn bnt-link btn-block btn-grid" (click)="play(1)">
-            <i class="fa fa-times light-icon" aria-hidden="true" [ngClass]="{'show': firstPlayed}"></i>
-            <i class="fa fa-circle-o light-icon" aria-hidden="true" [ngClass]="{'show': secondPlayed}"></i>
-        </button>
-    </div>
-
-    <div id="cell-c" class="grid-cell">
-        <button class="btn bnt-link btn-block btn-grid" (click)="play(1)">
-            <i class="fa fa-times light-icon" aria-hidden="true" [ngClass]="{'show': firstPlayed}"></i>
-            <i class="fa fa-circle-o light-icon" aria-hidden="true" [ngClass]="{'show': secondPlayed}"></i>
-        </button>
-    </div>
-
-    <div id="cell-d" class="grid-cell">
-        <button class="btn bnt-link btn-block btn-grid" (click)="play(1)">
-            <i class="fa fa-times light-icon" aria-hidden="true" [ngClass]="{'show': firstPlayed}"></i>
-            <i class="fa fa-circle-o light-icon" aria-hidden="true" [ngClass]="{'show': secondPlayed}"></i>
-        </button>
-    </div>
-
-    <div id="cell-e" class="grid-cell">
-        <button class="btn bnt-link btn-block btn-grid" (click)="play(1)">
-            <i class="fa fa-times light-icon" aria-hidden="true" [ngClass]="{'show': firstPlayed}"></i>
-            <i class="fa fa-circle-o light-icon" aria-hidden="true" [ngClass]="{'show': secondPlayed}"></i>
-        </button>
-    </div>
-
-    <div id="cell-f" class="grid-cell">
-        <button class="btn bnt-link btn-block btn-grid" (click)="play(1)">
-            <i class="fa fa-times light-icon" aria-hidden="true" [ngClass]="{'show': firstPlayed}"></i>
-            <i class="fa fa-circle-o light-icon" aria-hidden="true" [ngClass]="{'show': secondPlayed}"></i>
-        </button>
-    </div>
-
-    <div id="cell-g" class="grid-cell">
-        <button class="btn bnt-link btn-block btn-grid" (click)="play(1)">
-            <i class="fa fa-times light-icon" aria-hidden="true" [ngClass]="{'show': firstPlayed}"></i>
-            <i class="fa fa-circle-o light-icon" aria-hidden="true" [ngClass]="{'show': secondPlayed}"></i>
-        </button>
-    </div>
-
-    <div id="cell-h" class="grid-cell">
-        <button class="btn bnt-link btn-block btn-grid" (click)="play(1)">
-            <i class="fa fa-times light-icon" aria-hidden="true" [ngClass]="{'show': firstPlayed}"></i>
-            <i class="fa fa-circle-o light-icon" aria-hidden="true" [ngClass]="{'show': secondPlayed}"></i>
-        </button>
-    </div>
-
-    <div id="cell-i" class="grid-cell">
-        <button class="btn bnt-link btn-block btn-grid" (click)="play(1)">
-            <i class="fa fa-times light-icon" aria-hidden="true" [ngClass]="{'show': firstPlayed}"></i>
-            <i class="fa fa-circle-o light-icon" aria-hidden="true" [ngClass]="{'show': secondPlayed}"></i>
-        </button>
-    </div> -->
-
-    <div class="winning-stroke-vertical"></div>
-    <div class="winning-stroke-horizontal"></div>
-    <div class="winning-stroke-diagonal"></div>
+    <div class="winning-stroke-vertical" [ngClass]="{'strike-va': verticalA, 'strike-vb': verticalB, 'strike-vc': verticalC}"></div>
+    <div class="winning-stroke-horizontal" [ngClass]="{'strike-ha': horizontalA, 'strike-hb': horizontalB, 'strike-hc': horizontalC}"></div>
+    <div class="winning-stroke-diagonal" [ngClass]="{'strike-45': diagonal45, 'strike-135': diagonal135}"></div>
 </div>

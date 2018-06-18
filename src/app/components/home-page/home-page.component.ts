@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { slideUp } from '../../animations/slide-up';
-import { NodeApiService } from '../../services/node-api.service';
 import { DataStoreService } from '../../services/data-store.service';
 import { Player } from '../../player';
 
@@ -11,19 +9,38 @@ import { Player } from '../../player';
   styleUrls: ['./home-page.component.scss']
 })
 export class HomePageComponent implements OnInit {
-  players: string;
+  firstPlayer: Player;
+  secondPlayer: Player;
+  players: Player[];
 
   constructor(
     private router: Router,
-    private nodeApiService: NodeApiService,
     private dataStoreService: DataStoreService
   ) { }
 
   ngOnInit() {
+    this.checkPlayers();
   }
 
-  newPlayer() {
+  newPlayers() {
     this.router.navigate(['/enter-players']);
+  }
+
+  existingPlayers() {
+    if (this.players !== null && this.players.length > 1) {
+      this.router.navigate(['/play-game']);
+    }
+  }
+
+  checkPlayers() {
+    this.players = this.retrievePlayers();
+    if (this.players === null) {
+      this.router.navigate(['/enter-players']);
+    } else {
+      /* store first and second player */
+      this.firstPlayer = this.players[0];
+      this.secondPlayer = this.players[1];
+    }
   }
 
   private retrievePlayers() {

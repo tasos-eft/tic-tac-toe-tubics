@@ -22,7 +22,12 @@
         &:focus,
         &:visited {
             box-shadow: none;
-            border-bottom: 2px solid $pink-color;
+            &.first-player {
+                border-bottom: 2px solid $pink-color;
+            }
+            &.second-player {
+                border-bottom: 2px solid $purple-color;
+            }
         }
         &::-webkit-input-placeholder {
             color: rgba($color: $light-color, $alpha: 0.25);
@@ -79,6 +84,9 @@
             line-height: 2rem;
             margin-right: 2rem;
             transition: color 0.3s ease-in-out 0s;
+        }
+        .pink {
+            color: $pink-color;
         }
         .purple {
             color: $purple-color;

@@ -37,11 +37,8 @@ export class PlayGameComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    /* retrieves players from local-storage or from memory */
-    this.players = this.retrievePlayers();
-    /* store first and second player */
-    this.firstPlayer = this.players[0];
-    this.secondPlayer = this.players[1];
+    /* retrieves players from local-storage or from memory and check if both of them exist */
+    this.checkPlayers();
     /* when true, first player plays */
     this.firstTurn = true;
     /* 3x3 grid */
@@ -61,6 +58,17 @@ export class PlayGameComponent implements OnInit {
     this.p2v = false;
     this.p0d = false;
     this.p6d = false;
+  }
+
+  checkPlayers() {
+    this.players = this.retrievePlayers();
+    if (this.players === null) {
+      this.router.navigate(['/enter-players']);
+    } else {
+      /* store first and second player */
+      this.firstPlayer = this.players[0];
+      this.secondPlayer = this.players[1];
+    }
   }
 
   play(position) {
@@ -156,6 +164,7 @@ export class PlayGameComponent implements OnInit {
     } else {
       players = this.dataStoreService.pullData().players;
     }
+    console.log(players);
     return players;
   }
   /*

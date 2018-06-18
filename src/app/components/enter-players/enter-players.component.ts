@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NodeApiService } from '../../services/node-api.service';
 import { DataStoreService } from '../../services/data-store.service';
-import { Player } from '../../Player';
+import { Player } from '../../player';
 
 @Component({
   selector: 'app-enter-players',

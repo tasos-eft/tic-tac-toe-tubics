@@ -5,7 +5,7 @@
             <i class="fa fa-circle-o game-icon O-icon" aria-hidden="true" [ngClass]="{'show': secondPlayed[i]}"></i>
         </button>
     </div>
-    <div class="winning-stroke-vertical" [ngClass]="{'strike-va': verticalA, 'strike-vb': verticalB, 'strike-vc': verticalC}"></div>
-    <div class="winning-stroke-horizontal" [ngClass]="{'strike-ha': horizontalA, 'strike-hb': horizontalB, 'strike-hc': horizontalC}"></div>
-    <div class="winning-stroke-diagonal" [ngClass]="{'strike-45': diagonal45, 'strike-135': diagonal135}"></div>
+    <div class="winning-stroke-vertical" [ngClass]="{'strike-va': p0h, 'strike-vb': p3h, 'strike-vc': p6h}"></div>
+    <div class="winning-stroke-horizontal" [ngClass]="{'strike-ha': p0h, 'strike-hb': p3h, 'strike-hc': p6h}"></div>
+    <div class="winning-stroke-diagonal" [ngClass]="{'strike-45': p0d, 'strike-135': p6d}"></div>
 </div>

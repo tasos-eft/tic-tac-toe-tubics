@@ -78,7 +78,6 @@
     }
     .winning-stroke-horizontal {
         position: absolute;
-        background-color: $purple-color;
         top: 16.66666666%;
         left: 0;
         width: 0;
@@ -101,7 +100,6 @@
     }
     .winning-stroke-vertical {
         position: absolute;
-        background-color: $purple-color;
         top: 0;
         width: 0px;
         height: 0%;
@@ -123,7 +121,6 @@
     }
     .winning-stroke-diagonal {
         position: absolute;
-        background-color: $purple-color;
         top: 50%;
         width: 0;
         height: 0;
@@ -134,10 +131,16 @@
             width: 150%;
             height: 3px;
         }
-        .strike-135 {
+        &.strike-135 {
             width: 150%;
             height: 3px;
             transform: rotate(125deg);
         }
+    }
+    .pink {
+        background-color: $pink-color;
+    }
+    .purple {
+        background-color: $purple-color;
     }
 }

@@ -4,7 +4,6 @@ import { slideUp } from '../../animations/slide-up';
 import { NodeApiService } from '../../services/node-api.service';
 import { DataStoreService } from '../../services/data-store.service';
 import { Player } from '../../player';
-import { copyStyles } from '@angular/animations/browser/src/util';
 
 @Component({
   selector: 'app-play-game',
@@ -28,6 +27,8 @@ export class PlayGameComponent implements OnInit {
   p2v: boolean;
   p0d: boolean;
   p6d: boolean;
+  winner: Player;
+  color: string;
 
   constructor(
     private router: Router,
@@ -36,7 +37,7 @@ export class PlayGameComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    /* retrieves players from localstorage or from memory */
+    /* retrieves players from local-storage or from memory */
     this.players = this.retrievePlayers();
     /* store first and second player */
     this.firstPlayer = this.players[0];
@@ -66,15 +67,26 @@ export class PlayGameComponent implements OnInit {
     /* total moves */
     this.moves++;
     /* first player plays, else second player plays */
+    let hasWon = false;
     if (this.firstTurn) {
       this.firstPlayed[position] = true;
       if (this.moves >= 5) {
-        this.checkWinner(this.firstPlayed);
+        hasWon = this.checkWinner(this.firstPlayed);
+        if (hasWon) {
+          this.winner = this.firstPlayer;
+          /* winner color */
+          this.color = 'pink';
+        }
       }
     } else {
       this.secondPlayed[position] = true;
       if (this.moves >= 5) {
-        this.checkWinner(this.secondPlayed);
+        hasWon = this.checkWinner(this.secondPlayed);
+        if (hasWon) {
+          this.winner = this.firstPlayer;
+          /* winner color */
+          this.color = 'purple';
+        }
       }
     }
     /* change player */
@@ -93,45 +105,48 @@ export class PlayGameComponent implements OnInit {
     * p0d: d0 d4 d8 on 0
     * p6d: d2 d4 d6 on 6
     */
-    let combination = '';
+    let winComb = null;
     /* horizontal */
     if (playerMoves[0] === true && playerMoves[1] === true && playerMoves[2] === true) {
-      combination = 'p0h';
+      winComb = 'p0h';
       this.p0h = true;
     }
     if (playerMoves[3] === true && playerMoves[4] === true && playerMoves[5] === true) {
-      combination = 'p3h';
+      winComb = 'p3h';
       this.p3h = true;
     }
     if (playerMoves[6] === true && playerMoves[7] === true && playerMoves[8] === true) {
-      combination = 'p6h';
+      winComb = 'p6h';
       this.p6h = true;
     }
 
     /* vertical */
     if (playerMoves[0] === true && playerMoves[3] === true && playerMoves[6] === true) {
-      combination = 'p0v';
+      winComb = 'p0v';
       this.p0v = true;
     }
     if (playerMoves[1] === true && playerMoves[4] === true && playerMoves[7] === true) {
-      combination = 'p1v';
+      winComb = 'p1v';
       this.p1v = true;
     }
     if (playerMoves[2] === true && playerMoves[5] === true && playerMoves[8] === true) {
-      combination = 'p2v';
+      winComb = 'p2v';
       this.p2v = true;
     }
 
     /* diagonal */
     if (playerMoves[0] === true && playerMoves[4] === true && playerMoves[8] === true) {
-      combination = 'p0d';
+      winComb = 'p0d';
       this.p0d = true;
     }
     if (playerMoves[2] === true && playerMoves[4] === true && playerMoves[6] === true) {
-      combination = 'p6d';
+      winComb = 'p6d';
       this.p6d = true;
     }
-    console.log('winning combination', combination);
+    if (winComb) {
+      console.log('winning combination', winComb);
+    }
+    return winComb;
   }
 
   private retrievePlayers() {

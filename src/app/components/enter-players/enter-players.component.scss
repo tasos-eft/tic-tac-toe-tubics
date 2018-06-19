@@ -36,6 +36,14 @@
         &:-moz-placeholder {
             color: rgba($color: $light-color, $alpha: 0.25);
         }
+        &.purple {
+            &:active,
+            &:focus,
+            &:visited {
+                box-shadow: none;
+                border-bottom: 2px solid $purple-color;
+            }
+        }
     }
     hr {
         border-top: 1px solid rgba($color: $light-color, $alpha: 0.25);
@@ -52,6 +60,9 @@
         &.show-message {
             visibility: visible;
             opacity: 1;
+        }
+        &.purple {
+            color: $purple-color;
         }
     }
     .bnt-submit {

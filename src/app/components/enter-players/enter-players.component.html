@@ -1,11 +1,11 @@
 <div class="player-forms">
     <p class="text-uppercase mb-0">first player </p>
-    <input type="text" class="form-control first-player" placeholder="X - player" [(ngModel)]="firstPlayer.name" (ngModelChange)="firstPlayer.validatePlayer($event)" name="firstPlayer.name">
+    <input type="text" class="form-control" placeholder="X - player" [(ngModel)]="firstPlayer.name" (ngModelChange)="firstPlayer.validatePlayer($event)" name="firstPlayer.name">
     <span class="message" [ngClass]="{'show-message': !firstPlayer.validator}"> * field is required </span>
     <hr>
     <p class="text-uppercase mb-0">second player </p>
-    <input type="text" class="form-control second-player" placeholder="O - player" [(ngModel)]="secondPlayer.name" (ngModelChange)="secondPlayer.validatePlayer($event)" name="secondPlayer.name">
-    <span class="message" [ngClass]="{'show-message': !secondPlayer.validator}"> * field is required </span>
+    <input type="text" class="form-control purple" placeholder="O - player" [(ngModel)]="secondPlayer.name" (ngModelChange)="secondPlayer.validatePlayer($event)" name="secondPlayer.name">
+    <span class="message purple" [ngClass]="{'show-message': !secondPlayer.validator}"> * field is required </span>
 
     <button type="button" class="btn btn-light btn-block bnt-submit" [disabled]="!firstPlayer.validator && !secondPlayer.validator" (click)="submitPlayer(firstPlayer.name, secondPlayer.name)">  
         <i class="fa fa-times light-icon" aria-hidden="true" [ngClass]="{'pink': firstPlayer.validator}" ></i> 

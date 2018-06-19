@@ -50,29 +50,11 @@ router.get('/read-players/', (req, res, next) => {
     /* 
      * get all players
      */
-    db.get().collection("players").find({}).toArray(function(err, result) {
+    db.get().collection("players").find({}).sort({ score: -1 }).toArray((err, result) => {
         if (err) throw err;
         console.log(result);
         res.json(result);
     });
 });
-
-// router.post('/create-player/', (req, res, next) => {
-//     /* 
-//      * 
-//      */
-// });
-
-// router.post('/update-player/', (req, res) => {
-//     /* 
-//      * 
-//      */
-// });
-
-// router.post('/delete-player/', (req, res) => {
-//     /* 
-//      * 
-//      */
-// });
 
 module.exports = router;

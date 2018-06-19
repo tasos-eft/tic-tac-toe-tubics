@@ -12,9 +12,10 @@
         font-size: 1.125rem;
         color: $pink-color;
         border-color: $pink-color;
+        text-transform: uppercase;
         &:active,
         &:hover {
-            color: #fff;
+            color: $light-color;
             background-color: $pink-color;
             border-color: $pink-color;
         }
@@ -23,6 +24,16 @@
         }
         &:last-child {
             margin-top: 2rem;
+        }
+        &.purple {
+            color: $purple-color;
+            border-color: $purple-color;
+            &:active,
+            &:hover {
+                color: $light-color;
+                background-color: $purple-color;
+                border-color: $purple-color;
+            }
         }
         @media (min-width: 768px) {
             padding: 1.25rem 2rem;

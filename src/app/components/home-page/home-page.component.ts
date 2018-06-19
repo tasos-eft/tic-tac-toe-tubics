@@ -12,6 +12,7 @@ export class HomePageComponent implements OnInit {
   firstPlayer: Player;
   secondPlayer: Player;
   players: Player[];
+  findPlayers: boolean;
 
   constructor(
     private router: Router,
@@ -19,6 +20,7 @@ export class HomePageComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.findPlayers = false;
     this.checkPlayers();
   }
 
@@ -35,8 +37,10 @@ export class HomePageComponent implements OnInit {
   checkPlayers() {
     this.players = this.retrievePlayers();
     if (this.players === null) {
-      this.router.navigate(['/enter-players']);
+      this.findPlayers = false;
+      // this.router.navigate(['/enter-players']);
     } else {
+      this.findPlayers = true;
       /* store first and second player */
       this.firstPlayer = this.players[0];
       this.secondPlayer = this.players[1];

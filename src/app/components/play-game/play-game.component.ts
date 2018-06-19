@@ -119,6 +119,7 @@ export class PlayGameComponent implements OnInit, AfterViewInit {
   }
 
   leaderBoard() {
+    this.modalRef.hide();
     this.router.navigate(['/display-results']);
   }
 

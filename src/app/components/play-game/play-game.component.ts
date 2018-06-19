@@ -119,12 +119,15 @@ export class PlayGameComponent implements OnInit, AfterViewInit {
   }
 
   leaderBoard() {
-    this.nodeApiService.postData('/players/find-player/', this.winner)
-    .then(data => console.log('data', data))
-    .catch(error => console.log('error', error));
+    this.router.navigate(['/display-results']);
   }
 
   endGame() {
+    this.nodeApiService.postData('/players/find-and-update-player/', this.winner)
+      .then(data => {
+        console.log('data', data);
+      })
+      .catch(error => console.log('error', error));
     setTimeout(() => {
       this.showResults(this.templates.toArray()[1], this.winner);
     }, 4000);

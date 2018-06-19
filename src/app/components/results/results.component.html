@@ -1,3 +1,16 @@
-<p>
-  results works!
-</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Name</th>
+            <th scope="col">Score</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let player of players; let i = index" id="cell-{{i}}">
+            <th scope="row">{{i+1}}</th>
+            <td>{{player.name}}</td>
+            <td>{{player.score}}</td>
+        </tr>
+    </tbody>
+</table>

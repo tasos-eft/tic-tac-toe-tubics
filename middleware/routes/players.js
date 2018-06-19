@@ -8,22 +8,11 @@ const db = require('../utilities/mongodb-utility');
 /* custom helpers */
 const helper = require('../utilities/helper');
 
-router.post('/create-player/', (req, res, next) => {
-    db.get().collection('players').insert(player, (err, record) => {
-        if (err) {
-            next();
-        } else {
-            result = record;
-            console.log('\n - create new player - \n', record);
-        }
-    });
-});
-
-router.post('/find-player/', (req, res, next) => {
+router.post('/find-and-update-player/', (req, res, next) => {
     /* 
      * find specific player
      */
-    let result = {};
+    let result = null;
     console.log(req.body.name);
     db.get().collection('players')
         .find({
@@ -33,13 +22,27 @@ router.post('/find-player/', (req, res, next) => {
             if (error) {
                 next();
             };
-            /* no player data */
+            console.log('\n - find player by name - \n', data);
+            /* player is found */
             if (data.length > 0) {
-                /* player is found */
-                result = data;
-                console.log('\n - find player by name - \n', data);
-                return res.json({ player: result });
+                result = data[0];
+                db.get().collection('players').update({ name: result.name }, {
+                    $set: { "score": result.score + 1 },
+                    $currentDate: { lastModified: true }
+                });
+            } else {
+                player = req.body;
+                player.score += 1;
+                db.get().collection('players').insert(player, (err, record) => {
+                    if (err) {
+                        next();
+                    } else {
+                        result = record.ops[0];
+                        console.log('\n - create new player - \n', record);
+                    }
+                });
             }
+            return res.json(result);
         });
 });
 
@@ -47,21 +50,30 @@ router.get('/read-players/', (req, res, next) => {
     /* 
      * get all players
      */
-    return res.json({
-        player: 'all players'
+    db.get().collection("players").find({}).toArray(function(err, result) {
+        if (err) throw err;
+        console.log(result);
+        res.json(result);
+        db.close();
     });
 });
 
-router.post('/update-player/', (req, res) => {
-    /* 
-     * 
-     */
-});
+// router.post('/create-player/', (req, res, next) => {
+//     /* 
+//      * 
+//      */
+// });
 
-router.post('/delete-player/', (req, res) => {
-    /* 
-     * 
-     */
-});
+// router.post('/update-player/', (req, res) => {
+//     /* 
+//      * 
+//      */
+// });
+
+// router.post('/delete-player/', (req, res) => {
+//     /* 
+//      * 
+//      */
+// });
 
 module.exports = router;

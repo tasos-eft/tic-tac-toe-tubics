@@ -1,5 +1,7 @@
 @import "../../styles/constants";
 .navbar {
+    padding-left: 0;
+    padding-right: 0;
     a {
         &.navbar-brand {
             color: $light-color;
@@ -101,18 +103,16 @@
                 opacity: 1;
             }
             @media (min-width: 768px) {
-                left: 15px;
                 width: 75%;
             }
             .navbar-nav {
                 flex-direction: row;
                 .nav-item {
-                    padding-right: 2rem;
+                    margin-right: auto;
                     font-size: 1.5rem;
                     height: 45px;
                     line-height: 45px;
                     @media (min-width: 768px) {
-                        padding-right: 4rem;
                         font-size: 1.75rem;
                         height: 60px;
                         line-height: 60px;

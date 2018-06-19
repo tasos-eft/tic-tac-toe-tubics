@@ -12,23 +12,21 @@ import { NodeApiService } from './services/node-api.service';
 import { DataStoreService } from './services/data-store.service';
 
 import { NavBarComponent } from './components/nav-bar/nav-bar.component';
-import { NotFoundComponent } from './components/not-found/not-found.component';
-import { ResultsComponent } from './components/results/results.component';
-import { EnterPlayersComponent } from './components/enter-players/enter-players.component';
-import { ShowWinnerComponent } from './components/show-winner/show-winner.component';
-import { PlayGameComponent } from './components/play-game/play-game.component';
 import { HomePageComponent } from './components/home-page/home-page.component';
+import { EnterPlayersComponent } from './components/enter-players/enter-players.component';
+import { PlayGameComponent } from './components/play-game/play-game.component';
+import { ResultsComponent } from './components/results/results.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     NavBarComponent,
-    NotFoundComponent,
-    ResultsComponent,
+    HomePageComponent,
     EnterPlayersComponent,
-    ShowWinnerComponent,
     PlayGameComponent,
-    HomePageComponent
+    ResultsComponent,
+    NotFoundComponent
   ],
   imports: [
     BrowserModule,

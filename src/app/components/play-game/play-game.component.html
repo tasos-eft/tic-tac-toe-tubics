@@ -10,12 +10,14 @@
     <div class="winning-stroke-diagonal {{color}}" [ngClass]="{'strike-45': p0d, 'strike-135': p6d}"></div>
 </div>
 
-<ng-template #results>
+<button type="button" class="btn btn-primary" (click)="openModal(modalResults)">Create modal with component</button>
+
+<ng-template #modalResults>
     <div class="modal-header">
         <h4 class="modal-title pull-left">Modal</h4>
         <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
-            <span aria-hidden="true">&times;</span>
-          </button>
+        <span aria-hidden="true">&times;</span>
+      </button>
     </div>
     <div class="modal-body">
         This is a modal.

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChildren, AfterViewInit, QueryList  } from '@angular/core';
 import { Router } from '@angular/router';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
@@ -11,7 +11,9 @@ import { Player } from '../../player';
   templateUrl: './play-game.component.html',
   styleUrls: ['./play-game.component.scss']
 })
-export class PlayGameComponent implements OnInit {
+export class PlayGameComponent implements OnInit, AfterViewInit {
+  @ViewChildren(TemplateRef) templates: QueryList<TemplateRef<any>>;
+
   firstPlayer: Player;
   secondPlayer: Player;
   players: Player[];
@@ -30,7 +32,7 @@ export class PlayGameComponent implements OnInit {
   p6d: boolean;
   winner: Player;
   color: string;
-  bsModalRef: BsModalRef;
+  modalRef: BsModalRef;
 
   constructor(
     private router: Router,
@@ -38,6 +40,12 @@ export class PlayGameComponent implements OnInit {
     private dataStoreService: DataStoreService,
     private modalService: BsModalService
   ) { }
+
+  ngAfterViewInit() {
+    const modalResults = this.templates.toArray();
+    console.log(modalResults[1]);
+    this.openModal(modalResults[1]);
+  }
 
   ngOnInit() {
     /* retrieves players from local-storage or from memory and check if both of them exist */
@@ -205,5 +213,10 @@ export class PlayGameComponent implements OnInit {
       console.log('does not supports local storage');
       return false;
     }
+  }
+
+  openModal(template: TemplateRef<any>) {
+    console.log(template);
+    this.modalRef = this.modalService.show(template);
   }
 }

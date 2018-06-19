@@ -1,4 +1,4 @@
-@import "../../styles/_constants";
+@import "../../styles/constants";
 .player-forms {
     .h4 {
         font-size: 2rem;
@@ -59,37 +59,36 @@
             opacity: 1;
         }
     }
-    .bnt-submit {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        background-color: transparent;
-        height: auto;
-        margin-top: 3rem;
-        border-radius: 0;
-        border: 2px solid $light-color;
-        font-size: 1.5rem;
-        text-transform: uppercase;
-        color: $light-color;
-        &:hover,
+    .btn-players {
+        width: 100%;
+        padding: 1rem 1.25rem;
+        border-radius: 0%;
+        border-width: 2px;
+        font-size: 1.125rem;
+        color: $pink-color;
+        border-color: $pink-color;
         &:active,
-        &:focus {
-            border: 2px solid $purple-color;
-            color: $purple-color;
-            box-shadow: none;
+        &:hover {
+            color: #fff;
+            background-color: $pink-color;
+            border-color: $pink-color;
         }
-        .light-icon {
-            color: $light-color;
-            font-size: 2rem;
-            line-height: 2rem;
-            margin-right: 2rem;
-            transition: color 0.3s ease-in-out 0s;
+        &:first-child {
+            margin-bottom: 2rem;
         }
-        .pink {
-            color: $pink-color;
+        &:last-child {
+            margin-top: 2rem;
         }
-        .purple {
-            color: $purple-color;
+        @media (min-width: 768px) {
+            padding: 1.25rem 2rem;
+            font-size: 2.125rem;
+            border-width: 3px;
+            &:first-child {
+                margin-bottom: 4rem;
+            }
+            &:last-child {
+                margin-top: 4rem;
+            }
         }
     }
 }

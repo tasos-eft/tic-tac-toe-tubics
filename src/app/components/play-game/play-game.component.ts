@@ -1,4 +1,4 @@
-import { Component, OnInit, TemplateRef, ViewChildren, AfterViewInit, QueryList  } from '@angular/core';
+import { Component, OnInit, TemplateRef, ViewChildren, AfterViewInit, QueryList } from '@angular/core';
 import { Router } from '@angular/router';
 import { BsModalService } from 'ngx-bootstrap/modal';
 import { BsModalRef } from 'ngx-bootstrap/modal/bs-modal-ref.service';
@@ -42,9 +42,7 @@ export class PlayGameComponent implements OnInit, AfterViewInit {
   ) { }
 
   ngAfterViewInit() {
-    const modalResults = this.templates.toArray();
-    console.log(modalResults[1]);
-    this.openModal(modalResults[1]);
+    console.log(this.templates.toArray()[1]);
   }
 
   ngOnInit() {
@@ -120,13 +118,53 @@ export class PlayGameComponent implements OnInit, AfterViewInit {
     this.firstTurn = !this.firstTurn;
   }
 
-  postWinner(winner) {
-    this.nodeApiService.postData('/players/find-player/', winner);
+  leaderBoard() {
+    this.nodeApiService.postData('/players/find-player/', this.winner)
+    .then(data => console.log('data', data))
+    .catch(error => console.log('error', error));
   }
 
   endGame() {
+    setTimeout(() => {
+      this.showResults(this.templates.toArray()[1], this.winner);
+    }, 4000);
+  }
+
+  newPlayers() {
     this.clearStorage();
-    console.log(this.winner);
+    this.router.navigate(['/enter-players']);
+  }
+
+  existingPlayers() {
+    /* retrieves players from local-storage or from memory and check if both of them exist */
+    this.checkPlayers();
+    /* when true, first player plays */
+    this.firstTurn = true;
+    /* 3x3 grid */
+    this.cells = [1, 2, 3, 4, 5, 6, 7, 8, 9];
+    /* first player's moves on each grid cell (0-8) */
+    this.firstPlayed = [false, false, false, false, false, false, false, false, false];
+    /* second player's moves on each grid cell (0-8) */
+    this.secondPlayed = [false, false, false, false, false, false, false, false, false];
+    /* players' moves counter */
+    this.moves = 0;
+    /* ng class winning patterns */
+    this.p0h = false;
+    this.p3h = false;
+    this.p6h = false;
+    this.p0v = false;
+    this.p1v = false;
+    this.p2v = false;
+    this.p0d = false;
+    this.p6d = false;
+    this.modalRef.hide();
+  }
+
+  showResults(content: TemplateRef<any>, winner: Player) {
+    this.modalRef = this.modalService.show(content, { class: 'show-results' });
+    /* pass winner object to modalRef as content */
+    this.modalRef.content = winner;
+    console.log(this.modalRef.content);
   }
 
   private clearStorage() {
@@ -186,9 +224,7 @@ export class PlayGameComponent implements OnInit, AfterViewInit {
       winComb = 'p6d';
       this.p6d = true;
     }
-    if (winComb) {
-      console.log('winning combination', winComb);
-    }
+
     return winComb;
   }
 
@@ -213,10 +249,5 @@ export class PlayGameComponent implements OnInit, AfterViewInit {
       console.log('does not supports local storage');
       return false;
     }
-  }
-
-  openModal(template: TemplateRef<any>) {
-    console.log(template);
-    this.modalRef = this.modalService.show(template);
   }
 }

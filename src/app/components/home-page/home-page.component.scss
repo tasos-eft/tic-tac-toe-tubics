@@ -1,10 +1,10 @@
-@import "../../styles/_constants";
+@import "../../styles/constants";
 .home-page {
     display: flex;
     align-items: center;
     justify-content: center;
     flex-flow: column;
-    .btn-purple {
+    .btn-players {
         width: 100%;
         padding: 1rem 1.25rem;
         border-radius: 0%;

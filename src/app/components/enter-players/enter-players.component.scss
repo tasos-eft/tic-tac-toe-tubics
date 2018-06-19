@@ -22,12 +22,7 @@
         &:focus,
         &:visited {
             box-shadow: none;
-            &.first-player {
-                border-bottom: 2px solid $pink-color;
-            }
-            &.second-player {
-                border-bottom: 2px solid $purple-color;
-            }
+            border-bottom: 2px solid $pink-color;
         }
         &::-webkit-input-placeholder {
             color: rgba($color: $light-color, $alpha: 0.25);
@@ -59,36 +54,37 @@
             opacity: 1;
         }
     }
-    .btn-players {
-        width: 100%;
-        padding: 1rem 1.25rem;
-        border-radius: 0%;
-        border-width: 2px;
-        font-size: 1.125rem;
-        color: $pink-color;
-        border-color: $pink-color;
+    .bnt-submit {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background-color: transparent;
+        height: auto;
+        margin-top: 3rem;
+        border-radius: 0;
+        border: 2px solid $light-color;
+        font-size: 1.5rem;
+        text-transform: uppercase;
+        color: $light-color;
+        &:hover,
         &:active,
-        &:hover {
-            color: #fff;
-            background-color: $pink-color;
-            border-color: $pink-color;
+        &:focus {
+            border: 2px solid $purple-color;
+            color: $purple-color;
+            box-shadow: none;
         }
-        &:first-child {
-            margin-bottom: 2rem;
+        .light-icon {
+            color: $light-color;
+            font-size: 2rem;
+            line-height: 2rem;
+            margin-right: 2rem;
+            transition: color 0.3s ease-in-out 0s;
         }
-        &:last-child {
-            margin-top: 2rem;
+        .pink {
+            color: $pink-color;
         }
-        @media (min-width: 768px) {
-            padding: 1.25rem 2rem;
-            font-size: 2.125rem;
-            border-width: 3px;
-            &:first-child {
-                margin-bottom: 4rem;
-            }
-            &:last-child {
-                margin-top: 4rem;
-            }
+        .purple {
+            color: $purple-color;
         }
     }
 }

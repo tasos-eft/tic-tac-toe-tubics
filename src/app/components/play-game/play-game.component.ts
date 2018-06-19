@@ -131,6 +131,7 @@ export class PlayGameComponent implements OnInit, AfterViewInit {
   }
 
   newPlayers() {
+    this.modalRef.hide();
     this.clearStorage();
     this.router.navigate(['/enter-players']);
   }
@@ -140,8 +141,6 @@ export class PlayGameComponent implements OnInit, AfterViewInit {
     this.checkPlayers();
     /* when true, first player plays */
     this.firstTurn = true;
-    /* 3x3 grid */
-    this.cells = [1, 2, 3, 4, 5, 6, 7, 8, 9];
     /* first player's moves on each grid cell (0-8) */
     this.firstPlayed = [false, false, false, false, false, false, false, false, false];
     /* second player's moves on each grid cell (0-8) */
@@ -157,6 +156,7 @@ export class PlayGameComponent implements OnInit, AfterViewInit {
     this.p2v = false;
     this.p0d = false;
     this.p6d = false;
+    /* hide modal */
     this.modalRef.hide();
   }
 

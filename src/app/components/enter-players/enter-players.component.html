@@ -10,7 +10,6 @@
     <button type="button" class="btn btn-light btn-block bnt-submit" [disabled]="!firstPlayer.validator && !secondPlayer.validator" (click)="submitPlayer(firstPlayer.name, secondPlayer.name)">  
         <i class="fa fa-times light-icon" aria-hidden="true" [ngClass]="{'pink': firstPlayer.validator}" ></i> 
         <i class="fa fa-circle-o light-icon" aria-hidden="true" [ngClass]="{'purple': secondPlayer.validator}"></i> 
-        <!-- <span [ngClass]="{'purple': firstPlayer.validator && secondPlayer.validator}">player</span> -->
     </button>
     <span class="message pt-4" [ngClass]="{'show-message': nameValidator}"> * player names should be different </span>
 </div>

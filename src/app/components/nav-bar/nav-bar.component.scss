@@ -87,9 +87,9 @@
         &.navbar-collapse {
             display: block;
             position: absolute;
-            top: 0px;
-            left: 15px;
-            width: 75%;
+            top: 0;
+            left: 0;
+            width: 80%;
             visibility: hidden;
             opacity: 0;
             height: auto;
@@ -99,6 +99,10 @@
             &.displayed {
                 visibility: visible;
                 opacity: 1;
+            }
+            @media (min-width: 768px) {
+                left: 15px;
+                width: 75%;
             }
             .navbar-nav {
                 flex-direction: row;

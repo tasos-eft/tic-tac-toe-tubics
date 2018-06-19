@@ -54,7 +54,6 @@ router.get('/read-players/', (req, res, next) => {
         if (err) throw err;
         console.log(result);
         res.json(result);
-        db.close();
     });
 });
 
